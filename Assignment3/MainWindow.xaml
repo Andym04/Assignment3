@@ -1,0 +1,51 @@
+﻿<Window x:Class="Assignment3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Assignment 3" Height="450" Width="700">
+    <Grid Margin="20">
+        <!-- 2 Equal-height rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- 3 Columns (First column is twice the width of the other two) -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Row 0, Column 0: Full Name -->
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+            <Label Content="Name:" Target="{Binding ElementName=lblFullName}" />
+            <Label x:Name="lblFullName" FontWeight="Bold" />
+        </StackPanel>
+
+        <!-- Row 0, Column 1: Age -->
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+            <Label Content="Age:" Target="{Binding ElementName=lblAge}" />
+            <Label x:Name="lblAge" />
+        </StackPanel>
+
+        <!-- Row 0, Column 2: IsAdult CheckBox (Read-only / Disabled display) -->
+        <CheckBox x:Name="chkIsAdult" Content="Adult" 
+                  Grid.Row="0" Grid.Column="2" 
+                  VerticalAlignment="Center" 
+                  IsHitTestVisible="False" 
+                  Focusable="False" />
+
+        <!-- Row 1: Edit Button spanning all 3 columns -->
+        <Button x:Name="btnEdit" 
+                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                IsDefault="True" 
+                Click="BtnEdit_Click" 
+                Padding="15,8" FontSize="16" FontWeight="Bold">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Image Source="/Images/Edit image.png" Width="22" Height="22" Margin="0,0,8,0" />
+                <AccessText Text="_Edit" VerticalAlignment="Center" FontSize="12" />
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>
